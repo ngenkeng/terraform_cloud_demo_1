@@ -1,0 +1,53 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.nmy-eip (expand)" [label = "aws_eip.nmy-eip", shape = "box"]
+		"[root] aws_iam_user.myiamusers (expand)" [label = "aws_iam_user.myiamusers", shape = "box"]
+		"[root] aws_instance.my-ec2-vm (expand)" [label = "aws_instance.my-ec2-vm", shape = "box"]
+		"[root] aws_internet_gateway.vpc-dev-igw (expand)" [label = "aws_internet_gateway.vpc-dev-igw", shape = "box"]
+		"[root] aws_route.vpc-dev-route (expand)" [label = "aws_route.vpc-dev-route", shape = "box"]
+		"[root] aws_route_table.vpc-dev-public-route-table (expand)" [label = "aws_route_table.vpc-dev-public-route-table", shape = "box"]
+		"[root] aws_route_table_association.vpc-dev-public-route-table-assocciate (expand)" [label = "aws_route_table_association.vpc-dev-public-route-table-assocciate", shape = "box"]
+		"[root] aws_s3_bucket.mys3bucket (expand)" [label = "aws_s3_bucket.mys3bucket", shape = "box"]
+		"[root] aws_security_group.dev-vpc-sg (expand)" [label = "aws_security_group.dev-vpc-sg", shape = "box"]
+		"[root] aws_subnet.vpc-dev-public-subnet-1 (expand)" [label = "aws_subnet.vpc-dev-public-subnet-1", shape = "box"]
+		"[root] aws_vpc.vpc-dev (expand)" [label = "aws_vpc.vpc-dev", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].aws-east-1" [label = "provider[\"registry.terraform.io/hashicorp/aws\"].aws-east-1", shape = "diamond"]
+		"[root] aws_eip.nmy-eip (expand)" -> "[root] aws_instance.my-ec2-vm (expand)"
+		"[root] aws_eip.nmy-eip (expand)" -> "[root] aws_internet_gateway.vpc-dev-igw (expand)"
+		"[root] aws_iam_user.myiamusers (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.my-ec2-vm (expand)" -> "[root] aws_security_group.dev-vpc-sg (expand)"
+		"[root] aws_instance.my-ec2-vm (expand)" -> "[root] aws_subnet.vpc-dev-public-subnet-1 (expand)"
+		"[root] aws_internet_gateway.vpc-dev-igw (expand)" -> "[root] aws_vpc.vpc-dev (expand)"
+		"[root] aws_internet_gateway.vpc-dev-igw (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_route.vpc-dev-route (expand)" -> "[root] aws_internet_gateway.vpc-dev-igw (expand)"
+		"[root] aws_route.vpc-dev-route (expand)" -> "[root] aws_route_table.vpc-dev-public-route-table (expand)"
+		"[root] aws_route_table.vpc-dev-public-route-table (expand)" -> "[root] aws_vpc.vpc-dev (expand)"
+		"[root] aws_route_table.vpc-dev-public-route-table (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_route_table_association.vpc-dev-public-route-table-assocciate (expand)" -> "[root] aws_route_table.vpc-dev-public-route-table (expand)"
+		"[root] aws_route_table_association.vpc-dev-public-route-table-assocciate (expand)" -> "[root] aws_subnet.vpc-dev-public-subnet-1 (expand)"
+		"[root] aws_s3_bucket.mys3bucket (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.dev-vpc-sg (expand)" -> "[root] aws_vpc.vpc-dev (expand)"
+		"[root] aws_security_group.dev-vpc-sg (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_subnet.vpc-dev-public-subnet-1 (expand)" -> "[root] aws_vpc.vpc-dev (expand)"
+		"[root] aws_subnet.vpc-dev-public-subnet-1 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc.vpc-dev (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].aws-east-1"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_eip.nmy-eip (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_iam_user.myiamusers (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route.vpc-dev-route (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route_table_association.vpc-dev-public-route-table-assocciate (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_s3_bucket.mys3bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_eip.nmy-eip (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_user.myiamusers (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.vpc-dev-route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.vpc-dev-public-route-table-assocciate (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket.mys3bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"].aws-east-1 (close)" -> "[root] aws_vpc.vpc-dev (expand)"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"].aws-east-1 (close)"
+	}
+}
+
